@@ -2,103 +2,11 @@ import { useMemo, useState } from "react";
 import type { CSSProperties } from "react";
 import { questions } from "./data";
 import { scoreQuiz } from "./scoring";
-import type { Persona } from "./types";
 import type { AnswerMap, QuizResult } from "./types";
 
 type CustomProperties = CSSProperties & Record<`--${string}`, string | number>;
 
-const shareText = (result: QuizResult) =>
-  `ฉันได้ผลลัพธ์เป็น "${result.winner.persona.result.headline}" ใน ผู้ว่า Personality คุณคือผู้ว่าฯสายไหน?`;
-
 const shareUrl = () => `${window.location.origin}${window.location.pathname}`;
-
-const loadImage = (src: string) =>
-  new Promise<HTMLImageElement>((resolve, reject) => {
-    const image = new Image();
-    image.onload = () => resolve(image);
-    image.onerror = reject;
-    image.src = src;
-  });
-
-const drawWrappedText = (
-  context: CanvasRenderingContext2D,
-  text: string,
-  x: number,
-  y: number,
-  maxWidth: number,
-  lineHeight: number,
-) => {
-  const words = text.split(" ");
-  let line = "";
-  let cursorY = y;
-
-  words.forEach((word, index) => {
-    const nextLine = line ? `${line} ${word}` : word;
-    if (context.measureText(nextLine).width > maxWidth && line) {
-      context.fillText(line, x, cursorY);
-      line = word;
-      cursorY += lineHeight;
-      return;
-    }
-
-    line = nextLine;
-    if (index === words.length - 1) {
-      context.fillText(line, x, cursorY);
-    }
-  });
-};
-
-const createShareCard = async (persona: Persona) => {
-  const canvas = document.createElement("canvas");
-  canvas.width = 1080;
-  canvas.height = 1350;
-  const context = canvas.getContext("2d");
-
-  if (!context) {
-    return null;
-  }
-
-  context.fillStyle = "#faf9f7";
-  context.fillRect(0, 0, canvas.width, canvas.height);
-
-  context.fillStyle = persona.color;
-  context.fillRect(0, 0, canvas.width, 18);
-
-  const image = await loadImage(persona.image);
-  const imageHeight = 650;
-  const imageWidth = (image.width / image.height) * imageHeight;
-  context.drawImage(image, (canvas.width - imageWidth) / 2, 120, imageWidth, imageHeight);
-
-  context.textAlign = "center";
-  context.fillStyle = "#171717";
-  context.font = '700 56px "Noto Sans Thai", system-ui, sans-serif';
-  context.fillText("ผู้ว่า Personality", canvas.width / 2, 860);
-
-  context.fillStyle = persona.color;
-  context.font = '800 88px "Noto Sans Thai", system-ui, sans-serif';
-  context.fillText(persona.result.headline, canvas.width / 2, 980);
-
-  context.strokeStyle = persona.color;
-  context.lineWidth = 8;
-  context.beginPath();
-  context.moveTo(310, 1016);
-  context.lineTo(770, 1016);
-  context.stroke();
-
-  context.fillStyle = "#57534e";
-  context.font = '500 34px "Noto Sans Thai", system-ui, sans-serif';
-  drawWrappedText(context, persona.result.intro, canvas.width / 2, 1100, 780, 54);
-
-  const blob = await new Promise<Blob | null>((resolve) =>
-    canvas.toBlob(resolve, "image/png", 0.92),
-  );
-
-  if (!blob) {
-    return null;
-  }
-
-  return new File([blob], `4-puva-4-you-${persona.id}.png`, { type: "image/png" });
-};
 
 function Disclaimer() {
   return (
@@ -222,32 +130,17 @@ function Result({ result, onRestart }: { result: QuizResult; onRestart: () => vo
     }
 
     setShareState("sharing");
-    const text = shareText(result);
     const url = shareUrl();
-    const shareMessage = `${text} ${url}`;
 
     try {
-      const shareFile = await createShareCard(winner);
-      const files = shareFile ? [shareFile] : undefined;
-
-      if (
-        files &&
-        typeof navigator.canShare === "function" &&
-        navigator.canShare({ files })
-      ) {
-        await navigator.share({ title: "ผู้ว่า Personality", text: shareMessage, files });
-        setShareState("idle");
-        return;
-      }
-
       if (typeof navigator.share === "function") {
-        await navigator.share({ title: "ผู้ว่า Personality", text, url });
+        await navigator.share({ url });
         setShareState("idle");
         return;
       }
 
       if (navigator.clipboard) {
-        await navigator.clipboard.writeText(shareMessage);
+        await navigator.clipboard.writeText(url);
         setShareState("copied");
         return;
       }
@@ -288,7 +181,7 @@ function Result({ result, onRestart }: { result: QuizResult; onRestart: () => vo
           onClick={handleShare}
         >
           {shareState === "sharing"
-            ? "กำลังเตรียมการ์ดแชร์..."
+            ? "กำลังเปิดหน้าต่างแชร์..."
             : shareState === "copied"
               ? "คัดลอกลิงก์แล้ว"
               : "↗ แชร์ผลให้โลกรับรู้ !!"}
