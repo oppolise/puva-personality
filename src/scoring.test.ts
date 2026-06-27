@@ -4,8 +4,8 @@ import { buildPersonaAnswerMap, scoreQuiz } from "./scoring";
 import type { PersonaId } from "./types";
 
 describe("scoreQuiz", () => {
-  it("keeps the v1 quiz to 10 questions", () => {
-    expect(questions).toHaveLength(10);
+  it("keeps the quiz to 8 questions", () => {
+    expect(questions).toHaveLength(8);
   });
 
   it.each<PersonaId>(["chadchart", "anucha", "joe", "mallika"])(

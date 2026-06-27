@@ -26,7 +26,7 @@ export const personas: Persona[] = [
     result: {
       headline: "คุณเป็นชัชชาติ",
       intro:
-        "คุณเป็นสายลงพื้นที่ก่อนเปิดสไลด์ ชอบเห็นเมืองแก้ปัญหาด้วยพลังคน ระบบ และกล้ามเนื้อแห่งความหวัง",
+        "คุณเป็นสายเมื่อเจอปัญหาตรงหน้าก็จะขยับตัวและลงมือทำ รับผิดชอบตรง ๆ และเชื่อว่าร่างกายที่แข็งแรงช่วยพาชีวิตรอดได้หลายสถานการณ์",
     },
   },
   {
@@ -44,8 +44,7 @@ export const personas: Persona[] = [
     },
     result: {
       headline: "คุณเป็นอนุชา",
-      intro:
-        "คุณเป็นสายเห็นอะไรยุ่งแล้วอยากตีเส้น จัดคิว ติดป้าย และทำให้ทุกคนรู้ว่าต้องยืนตรงไหน",
+      intro: "คุณเป็นคนใต้แน่ๆ แต่แค่เราพิสูจน์ไม่ได้",
     },
   },
   {
@@ -64,7 +63,7 @@ export const personas: Persona[] = [
     result: {
       headline: "คุณเป็นดร.โจ",
       intro:
-        "คุณเป็นสายไม่ปล่อยผ่าน เห็นปัญหาเดิมวนซ้ำแล้วอยากเปิดแฟ้ม เปิดกล้อง และถามว่า 'ใครอนุมัติ?'",
+        "คุณเป็นสายตั้งคำถามกับต้นเหตุ ชอบมีหลักฐาน มีแผน และไม่อยากให้ปัญหาเดิมกลับมาซ้ำอีกแบบไร้คำอธิบาย",
     },
   },
   {
@@ -83,7 +82,7 @@ export const personas: Persona[] = [
     result: {
       headline: "คุณเป็นดร.มัลลิกา",
       intro:
-        "คุณเป็นสายถ้ามีปัญหา อย่าเพิ่งตกใจ เปิด dashboard ก่อน แล้วถาม AI ว่ากรุงเทพฯ ต้องการอะไรตอนตีสาม",
+        "คุณเป็นสายใช้เทคโนโลยีเป็นผู้ช่วยชีวิตประจำวัน มีอะไรติดขัดก็อยากโยนข้อมูลให้ AI ช่วยคิด ช่วยจัด และช่วยตัดสินใจให้ไวขึ้น เพราะ AI คือสมองที่สองของคุณ",
     },
   },
 ];
@@ -97,220 +96,170 @@ const choice = (
 
 export const questions: Question[] = [
   {
-    id: "waste-smell",
-    prompt: "โรงขยะส่งกลิ่นจนชาวบ้านแทบตั้งนาฬิกาปลุกด้วยจมูก เมืองควรจัดการยังไงให้จบจริง?",
+    id: "end-month-money",
+    prompt: "สิ้นเดือนเหมือนสิ้นใจ เงินในกระเป๋าแห้งกรอบ คุณจะเอาตัวรอดยังไงจนกว่าเงินเดือนออก?",
     choices: [
-      choice("waste-chadchart", "ลงพื้นที่ ดมจริง วัดจริง แล้วเปิด timeline แก้กลิ่นให้คนเห็น", "chadchart", {
-        infrastructure_resilience: 3,
-        anti_corruption_transparency: 1,
-      }),
-      choice("waste-anucha", "จัดระบบโรงขยะใหม่ ตั้งมาตรฐานปิดกลิ่นแบบมี checklist", "anucha", {
-        clean_transport_order: 2,
-        infrastructure_resilience: 2,
-      }),
-      choice("waste-joe", "เปิดสัญญาเอกชน ไล่เงื่อนไขทีละข้อ ใครไม่ทำก็เตรียมตอบ", "joe", {
-        anti_corruption_transparency: 3,
-        law_enforcement_business_friction: 1,
-      }),
-      choice("waste-mallika", "ติด sensor กลิ่นกับ AI แจ้งเตือนก่อนจมูกประชาชนลาออก", "mallika", {
-        ai_innovation_future_city: 3,
-        infrastructure_resilience: 2,
-      }),
-    ],
-  },
-  {
-    id: "green-line-fare",
-    prompt: "รถไฟฟ้าแพงจนแตะบัตรแล้วใจหาย ถ้าจะทำตั๋วเดือนหรือค่าโดยสารถูกลง ควรเริ่มตรงไหน?",
-    choices: [
-      choice("fare-chadchart", "เปิดตัวเลขต้นทุน รายได้ หนี้ แล้วคุยบนข้อมูลที่ประชาชนอ่านรู้เรื่อง", "chadchart", {
-        opportunity_human_care: 2,
-        infrastructure_resilience: 2,
-      }),
-      choice("fare-anucha", "ทำแพ็กเกจตั๋วเดือนให้เป็นระบบ คนทำงานไม่ต้องลุ้นยอดบัตรทุกเช้า", "anucha", {
-        clean_transport_order: 2,
-        opportunity_human_care: 1,
-      }),
-      choice("fare-joe", "รื้อดีลค่าเดินรถ หาจุดรั่ว แล้วเจรจาแบบถือแฟ้มหนา ๆ เข้าไป", "joe", {
-        anti_corruption_transparency: 2,
-        law_enforcement_business_friction: 2,
-      }),
-      choice("fare-mallika", "ทำระบบราคาอัจฉริยะ จ่ายตามพฤติกรรมเดินทาง ไม่ใช่ตามดวงรายวัน", "mallika", {
-        ai_innovation_future_city: 3,
-        opportunity_human_care: 1,
-      }),
-    ],
-  },
-  {
-    id: "childcare",
-    prompt: "พ่อแม่ทำงานเช้าเลิกค่ำ แต่ศูนย์เด็กเล็กปิดก่อนชีวิตจริง เมืองควรช่วยครอบครัวยังไง?",
-    choices: [
-      choice("child-chadchart", "ขยายศูนย์เด็กเล็ก เพิ่มเวลา และดูแลครอบครัวเหมือนเป็นเรื่องเมืองจริง ๆ", "chadchart", {
-        opportunity_human_care: 3,
-        infrastructure_resilience: 1,
-      }),
-      choice("child-anucha", "จัดระบบรับ-ส่ง นัดหมาย งบ และครูพี่เลี้ยงให้ไม่วุ่นเหมือนวันเปิดเทอม", "anucha", {
-        clean_transport_order: 2,
-        opportunity_human_care: 2,
-      }),
-      choice("child-joe", "ตรวจงบศูนย์เด็กเล็กให้โปร่งใส เงินเด็กต้องไม่เดินทางอ้อมโลก", "joe", {
-        anti_corruption_transparency: 2,
-        opportunity_human_care: 1,
-      }),
-      choice("child-mallika", "ทำแอปจองคิว แจ้งพัฒนาการ และให้ AI ช่วยดูแลตารางแบบพ่อแม่ไม่หัวหมุน", "mallika", {
-        ai_innovation_future_city: 3,
-        opportunity_human_care: 1,
-      }),
-    ],
-  },
-  {
-    id: "public-safety",
-    prompt: "ถนนยุบ ป้ายร่วง สะพานพัง ฟังแล้วเหมือนเมืองสุ่มกาชา เมืองควรป้องกันก่อนเกิดเหตุยังไง?",
-    choices: [
-      choice("safety-chadchart", "ลงสำรวจจุดเสี่ยง ทำแผนซ่อม และเปิด map ให้คนรู้ว่าตรงไหนควรระวัง", "chadchart", {
-        infrastructure_resilience: 3,
-        opportunity_human_care: 1,
-      }),
-      choice("safety-anucha", "ทำทะเบียนอาคาร ป้าย ถนน สะพาน ให้ครบ ไม่ใช่รอพังก่อนค่อยจำได้", "anucha", {
-        clean_transport_order: 3,
-        infrastructure_resilience: 2,
-      }),
-      choice("safety-joe", "ตรวจผู้รับเหมา มาตรฐานงาน และประวัติซ่อมซ้ำแบบไม่เกรงใจแฟ้มเก่า", "joe", {
-        anti_corruption_transparency: 2,
-        law_enforcement_business_friction: 2,
-      }),
-      choice("safety-mallika", "ใช้ AI ทำนายจุดเสี่ยงจากอายุอาคาร รูปถ่าย และเสียงประชาชนก่อนมันร่วง", "mallika", {
-        ai_innovation_future_city: 3,
-        infrastructure_resilience: 2,
-      }),
-    ],
-  },
-  {
-    id: "corruption",
-    prompt: "ส่วย ใบอนุญาต ฮั้วประมูล ฟังแล้วไมเกรนขึ้น เมืองควรปิดช่องโกงยังไง?",
-    choices: [
-      choice("corrupt-chadchart", "เปิดข้อมูลทุกขั้นตอนให้ประชาชนช่วยส่อง แสงแดดคือยาฆ่าเชื้อ", "chadchart", {
-        anti_corruption_transparency: 3,
-      }),
-      choice("corrupt-anucha", "ย้ายใบอนุญาตขึ้นออนไลน์ 100% ให้ระบบเป็นคนจัดคิว ไม่ใช่โต๊ะลับ", "anucha", {
-        clean_transport_order: 2,
-        anti_corruption_transparency: 2,
-      }),
-      choice("corrupt-joe", "ไล่เส้นทางเงิน เปิดเอกสารจัดซื้อ แล้วถามคำถามที่ทำให้ห้องประชุมเงียบ", "joe", {
-        anti_corruption_transparency: 3,
-        law_enforcement_business_friction: 2,
-      }),
-      choice("corrupt-mallika", "ให้ AI จับ pattern งบแปลก ๆ แบบตัวเลขเห็นแล้วเริ่มมีพิรุธ", "mallika", {
-        ai_innovation_future_city: 3,
-        anti_corruption_transparency: 2,
-      }),
-    ],
-  },
-  {
-    id: "foreign-nominee",
-    prompt: "บางย่านเจอธุรกิจนอมินีจนคนพื้นที่เริ่มงงว่าอยู่กรุงเทพฯ หรือเซิร์ฟเวอร์ใหม่ เมืองควรทำไง?",
-    choices: [
-      choice("nominee-chadchart", "ฟังคนพื้นที่ เก็บข้อมูลจริง แล้วประสานหน่วยงานให้ไม่โยนกันไปมา", "chadchart", {
-        opportunity_human_care: 2,
-        anti_corruption_transparency: 1,
-      }),
-      choice("nominee-anucha", "จัดระเบียบทะเบียนร้าน ป้าย ภาษี และใบอนุญาตให้ตรวจง่ายเหมือนเช็กพัสดุ", "anucha", {
-        clean_transport_order: 3,
-        law_enforcement_business_friction: 1,
-      }),
-      choice("nominee-joe", "เปิดปฏิบัติการกฎหมายร่วมหลายหน่วย ใครสวมสิทธิ์ก็เจอแฟ้มจริง", "joe", {
-        law_enforcement_business_friction: 3,
-        anti_corruption_transparency: 2,
-      }),
-      choice("nominee-mallika", "ให้ AI จับชื่อซ้ำ ที่อยู่ซ้ำ และความบังเอิญที่ไม่ค่อยบังเอิญ", "mallika", {
+      choice("money-mallika", "เปิด AI แล้วโยนรายรับรายจ่าย ให้ช่วยวางแผนเอาตัวรอดถึงสิ้นเดือนนี้", "mallika", {
         ai_innovation_future_city: 3,
         anti_corruption_transparency: 1,
       }),
-    ],
-  },
-  {
-    id: "tourism",
-    prompt: "ถ้าไม่อยากให้กรุงเทพฯ มีแค่แลนด์มาร์กเดิม ๆ เมืองควรปลุก 50 เขตให้คนอยากมาเที่ยวยังไง?",
-    choices: [
-      choice("tour-chadchart", "ดันเส้นทางชุมชนจริง อาหารจริง คนจริง ให้ทุกเขตมีเรื่องเล่าของตัวเอง", "chadchart", {
-        opportunity_human_care: 3,
-        infrastructure_resilience: 1,
-      }),
-      choice("tour-anucha", "จัดปฏิทินเทศกาล 50 เขตแบบเป็นระบบ ไม่ใช่อีเวนต์ที่รู้วันสุดท้าย", "anucha", {
-        clean_transport_order: 3,
-      }),
-      choice("tour-joe", "ตรวจงบอีเวนต์ให้คุ้มทุกบาท งานต้องดึงคน ไม่ใช่ดึงแต่พร็อพขึ้นเวที", "joe", {
-        anti_corruption_transparency: 2,
-        law_enforcement_business_friction: 1,
-      }),
-      choice("tour-mallika", "สร้าง Bangkok Festival Map ให้ AI แนะนำทริปตาม mood ตั้งแต่วัดยันคาเฟ่ลับ", "mallika", {
-        ai_innovation_future_city: 3,
-        opportunity_human_care: 1,
-      }),
-    ],
-  },
-  {
-    id: "street-food",
-    prompt: "ทางเท้าต้องเดินได้ แต่พ่อค้าแม่ค้าก็ต้องทำกิน เมืองควรบาลานซ์ street food ยังไง?",
-    choices: [
-      choice("food-chadchart", "หาพื้นที่ทำกินที่ไม่ทับทางเดิน ให้คนตัวเล็กอยู่ได้และคนเดินไม่ต้อง parkour", "chadchart", {
+      choice("money-anucha", "โทรหาแม่ที่ใต้ ขอข้าวสารกับแกงส้มมาช่วยชีวิตเมืองกรุงที่แสนยากลำบาก", "anucha", {
         opportunity_human_care: 3,
         clean_transport_order: 1,
       }),
-      choice("food-anucha", "ทำโซนผ่อนผันชัด ๆ มีเวลา มีเส้น มีป้าย เห็นแล้วรู้ว่าต้องยืนตรงไหน", "anucha", {
-        clean_transport_order: 3,
+      choice("money-chadchart", "วางแผนค่าใช้จ่ายให้รัดกุม แล้วปลอบใจว่ากำลังลดน้ำหนักอยู่", "chadchart", {
+        infrastructure_resilience: 2,
+        opportunity_human_care: 2,
+      }),
+      choice("money-joe", "เปิด Excel วางแผนการเงินใหม่ แล้วนั่งถามตัวเองว่ามาถึงจุดนี้ได้ยังไง", "joe", {
+        anti_corruption_transparency: 3,
+        infrastructure_resilience: 1,
+      }),
+    ],
+  },
+  {
+    id: "friend-conflict",
+    prompt: "เพื่อนสนิทสองคนทะเลาะกันหนัก แล้วมากดดันให้คุณเลือกข้าง คุณจะทำยังไง?",
+    choices: [
+      choice("conflict-joe", "รับฟังทั้งสองฝั่ง แล้วเลือกเข้าข้างกับคนที่มีเหตุผลและหลักฐานที่สุด", "joe", {
+        anti_corruption_transparency: 3,
+        law_enforcement_business_friction: 2,
+      }),
+      choice("conflict-chadchart", "ไม่เลือกข้าง แล้วชวนทั้งคู่ไปวิ่งให้เหงื่อช่วยดับอารมณ์", "chadchart", {
+        opportunity_human_care: 2,
+        infrastructure_resilience: 2,
+      }),
+      choice("conflict-anucha", "ไม่เลือกข้าง ชวนมากินแกงส้มที่บ้านแล้วค่อยปรับความเข้าใจ", "anucha", {
+        opportunity_human_care: 3,
+      }),
+      choice("conflict-mallika", "ให้ทั้งคู่พิมพ์เรื่องที่ทะเลาะกันลง AI แล้วรอดูคำตัดสิน", "mallika", {
+        ai_innovation_future_city: 3,
+        anti_corruption_transparency: 1,
+      }),
+    ],
+  },
+  {
+    id: "forgot-line",
+    prompt: "ตื่นมาเจอข้อความแชทสำคัญมากๆ ที่ส่งตั้งแต่เมื่อวาน แต่คุณลืมตอบสนิท คุณจะทำยังไง?",
+    choices: [
+      choice("line-anucha", "บอกไปว่าฝนตกไฟดับทั้งคืน แล้วส่งสติ๊กเกอร์หน้าเศร้าไปสามอัน", "anucha", {
+        opportunity_human_care: 3,
+      }),
+      choice("line-mallika", "ให้ AI draft คำขอโทษแบบมืออาชีพที่สุดก่อนส่ง", "mallika", {
+        ai_innovation_future_city: 3,
+        opportunity_human_care: 1,
+      }),
+      choice("line-chadchart", "โทรหาทันที ขอโทษตรง ๆ ไม่แก้ตัว", "chadchart", {
+        infrastructure_resilience: 2,
+        opportunity_human_care: 2,
+      }),
+      choice("line-joe", "ตอบก่อน แล้วตั้งระบบแจ้งเตือนใหม่ไม่ให้พลาดซ้ำอีก", "joe", {
+        anti_corruption_transparency: 2,
+        opportunity_human_care: 1,
+      }),
+    ],
+  },
+  {
+    id: "cant-sleep",
+    prompt: "ดึกมากแล้วแต่นอนไม่หลับ พรุ่งนี้ต้องประชุมตอนเช้า คุณจะทำยังไง?",
+    choices: [
+      choice("sleep-chadchart", "ลุกไปออกกำลังกายเบา ๆ ให้ร่างกายเหนื่อยแล้วค่อยกลับมานอน", "chadchart", {
+        infrastructure_resilience: 3,
+      }),
+      choice("sleep-mallika", "เปิด voice mode ของ AI เล่านิทานกล่อมเรานอน", "mallika", {
+        ai_innovation_future_city: 3,
+        opportunity_human_care: 1,
+      }),
+      choice("sleep-anucha", "เปิดเสียงทะเลใน YouTube ให้รู้สึกเหมือนได้กลับไปอยู่บ้านเกิด", "anucha", {
+        opportunity_human_care: 3,
+      }),
+      choice("sleep-joe", "เสิร์ชหาสาเหตุการนอนไม่หลับ แล้วลองแก้จากต้นเหตุ", "joe", {
+        anti_corruption_transparency: 2,
+        infrastructure_resilience: 1,
+      }),
+    ],
+  },
+  {
+    id: "dinner-vs-work",
+    prompt: "เพื่อนชวนไปกินข้าวคืนนี้ แต่คุณมีงานด่วนต้องส่งพรุ่งนี้เช้า คุณจะทำยังไง?",
+    choices: [
+      choice("dinner-mallika", "ให้ AI ช่วยทำงานให้ทั้งหมด ระหว่างนั้นไปกินข้าวกับเพื่อนแบบเริ่ดๆ !!", "mallika", {
+        ai_innovation_future_city: 3,
+        clean_transport_order: 1,
+      }),
+      choice("dinner-joe", "ปฏิเสธเพื่อนตรงๆ แล้วบอกเหตุผลว่าติดงานด่วนจริงๆ", "joe", {
+        anti_corruption_transparency: 3,
         law_enforcement_business_friction: 1,
       }),
-      choice("food-joe", "ตัดวงจรส่วยพื้นที่ ใบอนุญาตต้องชัด ไม่ใช่ต้องรู้จักใครก่อนขายหมูปิ้ง", "joe", {
-        law_enforcement_business_friction: 3,
-        anti_corruption_transparency: 2,
-      }),
-      choice("food-mallika", "ทำแผนที่ร้าน street food แบบ real-time จองคิวได้ รีวิวได้ หิวแล้วไม่หลง", "mallika", {
-        ai_innovation_future_city: 3,
+      choice("dinner-chadchart", "ไปกินด้วยกับเพื่อน แต่ขอกลับไวก่อน แล้วรีบกลับมาทำงานต่อ", "chadchart", {
         opportunity_human_care: 2,
+        infrastructure_resilience: 2,
+      }),
+      choice("dinner-anucha", "ชวนเพื่อนมาบ้านตัวเอง เพื่อจะทำแกงส้มให้เพื่อนกิน แล้วงานค่อยว่ากันอีกที", "anucha", {
+        opportunity_human_care: 3,
+        clean_transport_order: 1,
       }),
     ],
   },
   {
-    id: "traffic-pm25",
-    prompt: "รถติดกับ PM2.5 มาเป็นแพ็กคู่เหมือนโปรไม่อยากได้ เมืองควรแก้ต้นตอยังไงให้เห็นผล?",
+    id: "restaurant-queue",
+    prompt: "คิวร้านอาหารสุดฮิตยาวมาก แต่คุณหิวและอยากกินสุด ๆ คุณจะทำยังไง?",
     choices: [
-      choice("pm-chadchart", "เปิดข้อมูลควันดำ จุดเผา รถติด แล้วลงพื้นที่แก้ตรงที่คนหายใจจริง", "chadchart", {
-        infrastructure_resilience: 2,
-        opportunity_human_care: 2,
+      choice("queue-anucha", "เดินไปซื้อข้าวราดแกงข้างๆ อร่อย ถูก ไม่ต้องรอใคร", "anucha", {
+        opportunity_human_care: 3,
       }),
-      choice("pm-anucha", "จัดระบบรถสาธารณะ เส้นทาง และจุดตรวจควันดำให้ไม่กระจัดกระจายเหมือนสายชาร์จ", "anucha", {
-        clean_transport_order: 3,
-        infrastructure_resilience: 1,
+      choice("queue-chadchart", "ต่อคิวเลย เพื่อของกินเราทำได้ !!", "chadchart", {
+        infrastructure_resilience: 3,
+        opportunity_human_care: 1,
       }),
-      choice("pm-joe", "บังคับใช้กฎรถควันดำจริง จับจริง ปรับจริง ไม่ใช่แค่ขมวดคิ้วใส่ฝุ่น", "joe", {
+      choice("queue-mallika", "ให้ AI หาร้านรสชาติใกล้เคียงแต่คิวสั้นกว่าในระยะ 500 เมตรเดี่ยวนี้ๆๆ", "mallika", {
+        ai_innovation_future_city: 3,
+        opportunity_human_care: 1,
+      }),
+      choice("queue-joe", "วิเคราะห์ว่าช่วงเวลาไหนคิวน้อยที่สุด แล้วค่อยกลับมาซื้อใหม่", "joe", {
+        anti_corruption_transparency: 2,
+        clean_transport_order: 1,
+      }),
+    ],
+  },
+  {
+    id: "loud-neighbor",
+    prompt: "เพื่อนบ้านจัดปาร์ตี้ ร้องคาราโอเกะทะลุกำแพงตอนตีหนึ่ง คุณจะทำยังไง?",
+    choices: [
+      choice("noise-joe", "แจ้งเจ้าหน้าที่เรื่องเสียงรบกวน เพราะคนรอบข้างก็ควรได้นอน", "joe", {
         law_enforcement_business_friction: 3,
         anti_corruption_transparency: 1,
       }),
-      choice("pm-mallika", "ทำระบบพยากรณ์ฝุ่นและจราจร ให้ AI เตือนก่อนปอดขึ้นสถานะไม่ว่าง", "mallika", {
+      choice("noise-anucha", "เคาะห้องแล้วขอแจมไปด้วย เพราะเราโคตรจะเริ่ด", "anucha", {
+        opportunity_human_care: 3,
+      }),
+      choice("noise-chadchart", "ไม่อยากผิดใจกัน เลยใส่หูฟังแล้วพยายามนอนต่อ", "chadchart", {
+        opportunity_human_care: 2,
+        infrastructure_resilience: 1,
+      }),
+      choice("noise-mallika", "ใช้ AI สร้างคลื่นเสียงความถี่ตรงข้าม (Anti-noise) ยิงทะลุกำแพงไปหักล้างเสียงของห้องข้างๆ ให้เงียบสนิท", "mallika", {
         ai_innovation_future_city: 3,
         infrastructure_resilience: 1,
       }),
     ],
   },
   {
-    id: "bma-power",
-    prompt: "ถ้าแก้ พ.ร.บ. กทม. ได้หนึ่งเรื่อง คุณอยากให้เมืองได้อำนาจอะไรกลับมาก่อน?",
+    id: "series-choice",
+    prompt: "คืนวันศุกร์ อยากดูซีรีส์สักเรื่อง แต่เลื่อนหามาครึ่งชั่วโมงแล้วยังเลือกไม่ได้?",
     choices: [
-      choice("power-chadchart", "ดึงอำนาจที่กระทบชีวิตคนทุกวันก่อน เช่น ทางเท้า น้ำท่วม ขนส่ง แล้วทำให้จบ", "chadchart", {
-        opportunity_human_care: 2,
-        infrastructure_resilience: 2,
+      choice("series-mallika", "เปิด AI แล้วถามว่าคนแบบเราน่าจะชอบดูเรื่องอะไร", "mallika", {
+        ai_innovation_future_city: 3,
       }),
-      choice("power-anucha", "ขออำนาจจัดระบบจราจรและขนส่งให้เป็นแผงเดียว ไม่ใช่รีโมตคนละอัน", "anucha", {
-        clean_transport_order: 3,
+      choice("series-chadchart", "ถามเพื่อนหรือแฟนว่าอยากดูอะไร แล้วดูตาม ง่ายดี", "chadchart", {
+        opportunity_human_care: 2,
         infrastructure_resilience: 1,
       }),
-      choice("power-joe", "ขออำนาจตรวจสอบงบ สัญญา และ enforcement ให้ฟันได้จริงไม่ใช่ถือไม้บรรทัด", "joe", {
-        law_enforcement_business_friction: 3,
-        anti_corruption_transparency: 2,
+      choice("series-anucha", "เลิกหาซีรีส์ แล้วเปิดเพลงใต้เพื่อชีวิตแทน", "anucha", {
+        opportunity_human_care: 3,
       }),
-      choice("power-mallika", "ทำ city OS ให้ข้อมูลทุกหน่วยเชื่อมกัน ก่อนเมืองจะ lag กว่านี้", "mallika", {
-        ai_innovation_future_city: 3,
-        anti_corruption_transparency: 1,
+      choice("series-joe", "ถามตัวเองก่อนว่าอยากดูซีรีส์จริง ๆ หรือแค่ว่างจนเลื่อนวน", "joe", {
+        anti_corruption_transparency: 2,
+        opportunity_human_care: 1,
       }),
     ],
   },

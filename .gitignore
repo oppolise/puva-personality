@@ -22,3 +22,8 @@ pnpm-debug.log*
 # Editor folders
 .vscode/
 .idea/
+
+# Local AI harness hooks
+.claude/
+.codex/hooks.json
+.cursor/hooks.json

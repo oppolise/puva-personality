@@ -48,14 +48,14 @@ Persona colors:
 Home:
 - Small centered brand header.
 - Compact square poster illustration above the title.
-- Large title `4 ผู้ว่า 4 You`.
+- Large title `ผู้ว่า Personality`.
 - Short explanatory copy.
 - CTA text should stay playful: `เริ่มกันเลย !!`.
 - Show possible persona chips below the copy, not as heavy cards.
 
 Quiz:
 - One question per screen.
-- Display `สถานการณ์ที่ N` and progress as `N / 10`.
+- Display `สถานการณ์ที่ N` and progress as `N / 8`.
 - User selects an answer first; then presses `ต่อไป`.
 - Last question button becomes `วาร์ปไปดูผล!`.
 - Answer choices are centered text buttons without visible persona labels.
@@ -85,6 +85,6 @@ Result:
 
 - Mobile 375px: no clipped Thai text, buttons remain readable.
 - Desktop: content remains centered and does not become a wide dashboard.
-- Full flow: home -> 10 questions -> result -> share/copy -> restart.
+- Full flow: home -> 8 questions -> result -> share/copy -> restart.
 - Unit tests: scoring winner cases pass and privacy guard stays clean.
 - Privacy scan: no `fetch`, analytics calls, localStorage, sessionStorage, or sendBeacon in app source.
