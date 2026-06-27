@@ -184,7 +184,7 @@ function Result({ result, onRestart }: { result: QuizResult; onRestart: () => vo
             ? "กำลังเปิดหน้าต่างแชร์..."
             : shareState === "copied"
               ? "คัดลอกลิงก์แล้ว"
-              : "↗ แชร์ผลให้โลกรับรู้ !!"}
+              : "↗ แชร์ผลให้เพื่อนได้เล่นกัน !!"}
         </button>
         <button className="ghost-button" onClick={onRestart}>
           ↻ เริ่มใหม่
